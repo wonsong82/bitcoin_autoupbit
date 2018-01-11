@@ -92,7 +92,7 @@
                     <td>{{ $line->sd_pp_120? $line->sd_pp_120 * 100 : '---' }}%</td>
                     <td>{{ $line->sd_pp_240? $line->sd_pp_240 * 100 : '---' }}%</td>
 
-                    <td><b>{{$line->premium_rate * 100}}% ♥</b></td>
+                    <td{!!$record->min==$line->id?' style="background:#f00"':($record->max==$line->id?' style="background:#0f0"':'')!!}><b>{{$line->premium_rate * 100}}% ♥</b></td>
 
                     <td>{{ $line->sd_pr_5? $line->sd_pr_5 * 100 : '---' }}%</td>
                     <td>{{ $line->sd_pr_10? $line->sd_pr_10 * 100 : '---' }}%</td>

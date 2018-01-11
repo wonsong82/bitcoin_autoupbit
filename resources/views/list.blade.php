@@ -43,7 +43,7 @@
                         $record->lines[$currency->code]:false
                 @endphp
                 @if($line)
-                    <td><b>{{$line->premium_rate * 100}}% ♥</b></td>
+                    <td{!!$record->min==$line->id?' style="background:#f00"':($record->max==$line->id?' style="background:#0f0"':'')!!}><b>{{$line->premium_rate * 100}}% ♥</b></td>
                 @else
                     <td>---</td>
                 @endif

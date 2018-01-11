@@ -21,10 +21,28 @@ class PriceController extends Controller
             ->paginate(240);
 
         $records->getCollection()->transform(function($record){
+
+            $min=100;
+            $max=-100;
+            $minid=null;
+            $maxid=null;
+
             $lines = [];
             foreach($record->prices_record_lines as $line){
                 $lines[$line->currency->code] = $line;
+
+                if($line->premium_rate > $max){
+                    $max = $line->premium_rate;
+                    $maxid = $line->id;
+                }
+                if($line->premium_rate < $min){
+                    $min = $line->premium_rate;
+                    $minid = $line->id;
+                }
             }
+
+            $record->max = $maxid;
+            $record->min = $minid;
             $record->lines = $lines;
 
             return $record;
@@ -34,4 +52,6 @@ class PriceController extends Controller
             view('list-detail', compact('records', 'currencies')):
             view('list', compact('records', 'currencies'));
     }
+
+
 }
