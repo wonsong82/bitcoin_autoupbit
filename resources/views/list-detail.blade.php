@@ -26,6 +26,7 @@
     <thead>
     <tr>
         <th rowspan="3" style="vertical-align: top;">Time</th>
+        <th rowspan="3" style="vertical-align: top;">Rate&nbsp;Diff</th>
         @foreach($currencies as $currency)
         <th colspan="21" style="vertical-align: top;">{{ $currency->name }}&nbsp;({{$currency->code}})</th>
         @endforeach
@@ -68,6 +69,7 @@
     @foreach($records as $record)
         <tr>
             <td>{{ $record->recorded_at->format('Y/n/j_g:i:sA') }}</td>
+            <td><b>{{ $record->rate_diff * 100 }}% ♥</b></td>
             @foreach($currencies as $currency)
                 @php
                     $line = isset($record->lines[$currency->code])?
@@ -76,30 +78,30 @@
                 @if($line)
                     <td>${{number_format($line->base_price, 2)}}</td>
 
-                    <td>{{ $line->sd_bp_5? $line->sd_bp_5 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_bp_10? $line->sd_bp_10 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_bp_30? $line->sd_bp_30 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_bp_60? $line->sd_bp_60 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_bp_120? $line->sd_bp_120 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_bp_240? $line->sd_bp_240 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_bp_5)? $line->sd_bp_5 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_bp_10)? $line->sd_bp_10 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_bp_30)? $line->sd_bp_30 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_bp_60)? $line->sd_bp_60 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_bp_120)? $line->sd_bp_120 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_bp_240)? $line->sd_bp_240 * 100 : '---' }}%</td>
 
                     <td>${{number_format($line->premium_price, 2)}}</td>
 
-                    <td>{{ $line->sd_pp_5? $line->sd_pp_5 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pp_10? $line->sd_pp_10 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pp_30? $line->sd_pp_30 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pp_60? $line->sd_pp_60 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pp_120? $line->sd_pp_120 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pp_240? $line->sd_pp_240 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pp_5)? $line->sd_pp_5 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pp_10)? $line->sd_pp_10 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pp_30)? $line->sd_pp_30 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pp_60)? $line->sd_pp_60 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pp_120)? $line->sd_pp_120 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pp_240)? $line->sd_pp_240 * 100 : '---' }}%</td>
 
                     <td{!!$record->min==$line->id?' style="background:#f00"':($record->max==$line->id?' style="background:#0f0"':'')!!}><b>{{$line->premium_rate * 100}}% ♥</b></td>
 
-                    <td>{{ $line->sd_pr_5? $line->sd_pr_5 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pr_10? $line->sd_pr_10 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pr_30? $line->sd_pr_30 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pr_60? $line->sd_pr_60 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pr_120? $line->sd_pr_120 * 100 : '---' }}%</td>
-                    <td>{{ $line->sd_pr_240? $line->sd_pr_240 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pr_5)? $line->sd_pr_5 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pr_10)? $line->sd_pr_10 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pr_30)? $line->sd_pr_30 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pr_60)? $line->sd_pr_60 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pr_120)? $line->sd_pr_120 * 100 : '---' }}%</td>
+                    <td>{{ !is_null($line->sd_pr_240)? $line->sd_pr_240 * 100 : '---' }}%</td>
 
                 @else
                     <td>---</td>

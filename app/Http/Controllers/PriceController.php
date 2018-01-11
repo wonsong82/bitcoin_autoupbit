@@ -27,6 +27,7 @@ class PriceController extends Controller
             $minid=null;
             $maxid=null;
 
+
             $lines = [];
             foreach($record->prices_record_lines as $line){
                 $lines[$line->currency->code] = $line;
@@ -43,6 +44,7 @@ class PriceController extends Controller
 
             $record->max = $maxid;
             $record->min = $minid;
+            $record->rate_diff = $max-$min;
             $record->lines = $lines;
 
             return $record;

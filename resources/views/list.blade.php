@@ -27,6 +27,7 @@
     <thead>
     <tr>
         <th>Time</th>
+        <th>Rate&nbsp;Diff</th>
         @foreach($currencies as $currency)
             <th>{{ $currency->code }}</th>
         @endforeach
@@ -37,6 +38,7 @@
     @foreach($records as $record)
         <tr>
             <td>{{ $record->recorded_at->format('Y/n/j_g:i:sA') }}</td>
+            <td><b>{{ $record->rate_diff * 100 }}% ♥</b></td>
             @foreach($currencies as $currency)
                 @php
                     $line = isset($record->lines[$currency->code])?
