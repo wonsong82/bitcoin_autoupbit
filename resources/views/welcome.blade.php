@@ -13,8 +13,8 @@ $coins = ['BTC','XRP','ETH','BCC','NEO','ADA','LTC','ETC','ZEC','OMG','BTG','XMR
 
 <ul>
 @foreach($coins as $coin)
-    <li><a href="/?USDT-{{$coin}}" target="_blank">USDT-{{$coin}}</a></li>
-    <li><a href="/?KRW-{{$coin}}" target="_blank">KRW-{{$coin}}</a></li>
+    <li><a href="/?USDT-{{$coin}}">USDT-{{$coin}}</a></li>
+    <li><a href="/?KRW-{{$coin}}">KRW-{{$coin}}</a></li>
 @endforeach
 </ul>
 
