@@ -6,9 +6,9 @@
 <body>
 <h1>AUTOUPBIT</h1>
 
-@php(
+@php
 $coins = ['BTC','XRP','ETH','BCC','NEO','ADA','LTC','ETC','ZEC','OMG','BTG','XMR','DASH'];
-)
+@endphp
 
 
 <ul>
