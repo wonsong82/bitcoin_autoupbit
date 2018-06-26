@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Price\CurrencyPriceClean;
 use App\Console\Commands\Price\CurrencyPriceClear;
 use App\Console\Commands\Price\CurrencyPriceUpdate;
 use Illuminate\Console\Scheduling\Schedule;
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         CurrencyPriceClear::class,
         CurrencyPriceUpdate::class,
+        CurrencyPriceClean::class,
     ];
 
     /**
@@ -29,6 +31,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command(CurrencyPriceUpdate::class)
             ->everyMinute();
+
+        $schedule->command(CurrencyPriceClean::class)
+            ->daily();
     }
 
     /**
